@@ -3,9 +3,14 @@ var app = express();
 var fs = require('fs');
 var open = require('open');
 var serverPort = (process.env.PORT  || 4443);
+var https = require('https');
 var http = require('http');
+var options = {
+  key: fs.readFileSync('./fake-keys/privatekey.pem'),
+  cert: fs.readFileSync('./fake-keys/certificate.pem')
+};
 
-var server = http.createServer(app);
+var server = https.createServer(options,app);
 
 var io = require('socket.io')(server);
 
