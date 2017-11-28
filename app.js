@@ -2,16 +2,10 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var open = require('open');
-var options = {
-  key: fs.readFileSync('./fake-keys/privatekey.pem'),
-  cert: fs.readFileSync('./fake-keys/certificate.pem')
-};
 var serverPort = (process.env.PORT  || 4443);
-
 var http = require('http');
-var server;
 
-  server = http.createServer(app);
+var server = http.createServer(app);
 
 var io = require('socket.io')(server);
 
