@@ -9,8 +9,8 @@ var options = {
   key: fs.readFileSync('./fake-keys/privatekey.pem'),
   cert: fs.readFileSync('./fake-keys/certificate.pem')
 };
-
-var server = https.createServer(options,app);
+//var server = https.createServer(options,app);
+var server = http.createServer(app);
 
 var io = require('socket.io')(server);
 
